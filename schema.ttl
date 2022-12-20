@@ -1,0 +1,53 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <http://localhost/arch> .
+
+#general arch relations
+:dependsOn a rdf:Property .
+
+#Components
+:Component a rdfs:Class .
+
+:Logical_Component rdfs:subClassOf :Component .
+
+:Software_Component rdfs:subClassOf :Component .
+
+:allocatesFunctions a rdf:Property ;
+    rdfs:domain :Component ;
+    rdfs:range :FunctionAllocation .
+
+#Decision
+:Decision a rdfs:Class.
+
+:basedOn a rdf:Property ;
+    rdfs:range :Decision .
+
+#Decomposition
+:Decomposition a rdfs:Class .
+
+:decompositionOf a rdf:Property ;
+    rdfs:domain :Decomposition ;
+    rdfs:range :Function .
+
+:subfunctionOf a rdf:Property ;
+    rdfs:domain :Decomposition ;
+    rdfs:range :Function .
+
+#Function
+:Function a rdfs:Class .
+
+#FunctionAllocation
+:FunctionAllocation a rdfs:Class .
+
+:allocates a rdf:Property ;
+    rdfs:domain :FunctionAllocation ;
+    rdfs:range :Function .
+
+#Interface
+:Interface a rdfs:Class .
+
+:Logical_Interface a rdfs:Class ;
+    rdfs:subClassOf :Interface .
+
+:Software_Interface a rdfs:Class ;
+    rdfs:subClassOf :Interface .
